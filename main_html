@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyctophobia</title>
+    <link rel="stylesheet" href="main_style.css">
+    <link rel="function" href="main_function.js">
+</head>
+<body>
+    
+    <div class="Container">
+        <p>Test</p>
+    </div>
+
+</body>
+</html>
