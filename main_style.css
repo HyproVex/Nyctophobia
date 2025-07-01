@@ -1,3 +1,45 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* nastavení Wrapperu */ 
+
+.Wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    height: 90vh;
+}
+
+/* rozpoložení logu a mainu */
+
+.Log{
+    border: 1px solid black;
+    width: 30%;
+    text-align: center;
+    align-items: center;
+}
+
+.Main{
+    border: 1px solid black;
+    width: 70%;
+    text-align: center;
+    align-items: center;
+}
+
+/* nastavení Footeru */
+
+footer{
+    border: 1px solid black;
+    text-align: center;
+    height: 9.5vh;
+    align-items: end;
+}
+
+/* Text 1 */ 
+
 .Container{
     color: red;
     font-size: 10px;
