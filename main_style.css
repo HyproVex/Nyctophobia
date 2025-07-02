@@ -1,10 +1,13 @@
 
+/* Page Settings */
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-/* nastavení Wrapperu */ 
+/* Wrapper Settings */ 
 
 .Wrapper{
     display: flex;
@@ -13,13 +16,14 @@
     height: 90vh;
 }
 
-/* rozpoložení logu a mainu */
+/* Placement for LOG and MAIN */
 
 .Log{
     border: 1px solid black;
     width: 30%;
     text-align: center;
     align-items: center;
+    padding: 10px 10px;
 }
 
 .Main{
@@ -27,26 +31,27 @@
     width: 70%;
     text-align: center;
     align-items: center;
+    padding: 10px 10px;
 }
 
-/* nastavení Footeru */
+/* Settings for FOOTER */
 
 footer{
     border: 1px solid black;
     text-align: center;
-    height: 9.5vh;
+    height: 7.6vh;
     align-items: end;
+    padding: 10px 10px;
 }
 
-/* Text 1 */ 
+/* Button settings */ 
 
-.Container{
-    color: red;
-    font-size: 10px;
-    transition: 200ms;
+button{
+    font-size: 15px;
+    transition: 300ms;
 }
-.Container:hover{
-    color: red;
+
+button:hover{
     font-size: 20px;
-    transition: 200ms;
+    transition: 300ms;
 }
