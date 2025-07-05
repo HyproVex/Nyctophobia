@@ -39,7 +39,7 @@ MatchButton.onclick = function(){
 
     PAGE.style.color = "black";
     PAGE.style.transition = "1000ms";
-    PAGE.style.background = "radial-gradient(circle,rgb(196, 111, 0) 0%, rgb(56, 39, 0) 80%, rgba(0, 0, 0, 1) 100%)";
+    PAGE.style.background = "radial-gradient(circle,rgb(102, 58, 0) 0%, rgb(22, 16, 0) 80%, rgba(0, 0, 0, 1) 100%)";
 
     matchText.textContent = "Matches";
     text1.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";   
