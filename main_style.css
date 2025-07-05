@@ -6,6 +6,11 @@
     padding: 0;
     font-family: 'Courier New', Courier, monospace;
 }
+#PAGE{
+    background: radial-gradient(circle, black, black, black);
+    color: white;
+    cursor: auto;
+}
 
 /* Wrapper Settings */ 
 
@@ -34,6 +39,7 @@
     padding: 10px 10px;
 }
 
+
 /* Settings for FOOTER and FOOTERS */
 
 footer{
@@ -43,6 +49,7 @@ footer{
     align-items: end;
     padding: 10px 10px;
 }
+
 
 /* Button settings */ 
 
@@ -62,6 +69,7 @@ button{
 button:hover{
     font-size: 27px;
     transition: 300ms;
+    cursor: auto;
 }
 
 button:active{
@@ -74,6 +82,60 @@ button:active{
 #MatchCounter{
     font-size: 25px;
     font-weight: bolder;
+}
+
+/* Cursor Light */
+
+.cursor{
+    display: none;
+    z-index: 999;
+    position: fixed;
+    background: rgb(255, 17, 0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px rgb(255, 115, 0);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes light{
+    0%{
+        width: 100px;
+        height: 100px;
+    }
+    50%{
+        width: 150px;
+        height: 150px;
+    }
+    100%{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.cursor:before{
+    content: '';
+    position: absolute;
+    background: rgb(255, 196, 34);
+    width: 100px;
+    height: 100px;
+    opacity: 0.3;
+    transform: translate(-46%, -45%);
+    border-radius: 50%;
+    animation: light 12s infinite;
+}
+
+/* color difference on hover */
+
+p{
+    color: black;
+    transition: 200ms;
+}
+
+p:hover{
+    color: rgb(255, 182, 24);
+    transition: 200ms;
 }
 
 /* Setting for Version */ 

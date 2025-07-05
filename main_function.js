@@ -8,7 +8,7 @@ window.alert("Feel free to report bugs or make recommendations");
 
 const Matches = document.getElementById("MatchCounter");
 const MatchButton = document.getElementById("MatchButton");
-let CounterMatches = 0;
+let CounterMatches = 10;
 
 
 // LOG text
@@ -20,34 +20,84 @@ let text4 = document.getElementById("text4");
 let text5 = document.getElementById("text5");
 
 
-// Counter by clicking button ( Matches )
+// Inicializing for PAGE functions
+
+const PAGE = document.getElementById("PAGE");
+
+// Inicializing light
+
+let light = false;
+
+// INTRO
+
+let matchText = document.getElementById("test_text");
 
 MatchButton.onclick = function(){
-    document.getElementById("test_text").textContent = "Lighted matches";
-    CounterMatches += 1;
-    Matches.textContent = CounterMatches;
 
-    if(CounterMatches == 1){
-        text1.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";    
+    // Transition from black to white circle background
+
+
+    PAGE.style.color = "black";
+    PAGE.style.transition = "1000ms";
+    PAGE.style.background = "radial-gradient(circle,rgb(196, 111, 0) 0%, rgb(56, 39, 0) 80%, rgba(0, 0, 0, 1) 100%)";
+
+    matchText.textContent = "Matches";
+    text1.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";   
+
+    // Counter by clicking button ( Matches )
+
+    if(CounterMatches > 0){
+        CounterMatches -= 1;
     }
 
-    if(CounterMatches >= 50){
-        text1.textContent = "you made 50 lighted matches";
+    Matches.textContent = CounterMatches;
+
+    if(CounterMatches == 0){
+        text1.textContent = "you have no matches left";
         text2.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";
     }
 
-    if(CounterMatches >= 100){
-        text1.textContent = "why did you made 100 lighted matches?";    
-        text2.textContent = "you made 50 lighted matches";
-        text3.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";
-    }
+    // cursor light
 
-    if(CounterMatches >= 200){
-        text1.textContent = "stop it";        
-        text2.textContent = "why did you made 100 lighted matches?";
-        text3.textContent = "you made 50 lighted matches";
-        text4.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";
-    }
+    light = true;
+
+    // disabling normal cursor ( TEST )
+
+    PAGE.style.cursor = "none";
+
+    // Checking if you still have matches
+
+    NoLight(CounterMatches)
 }
 
+// Animated cursor 
 
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    cursor.style.top = y + "px";
+    cursor.style.left = x + "px";
+
+    if(light == true){
+        cursor.style.display = "block";
+        MatchButton.style.cursor = "none"
+    }
+})
+
+    //cursor effect on mouseout
+
+document.addEventListener("mouseout", () => {
+    cursor.style.display = "none";
+})    
+
+// When mo light source
+
+function NoLight(CounterMatches){
+    if(CounterMatches == 0){
+        PAGE.style.background = "radial-gradient(circle, black, black, black)";
+        PAGE.style.color = "darkgray";
+    }
+}
