@@ -1,17 +1,12 @@
 
-// Messages for player
-
-window.alert("Feel free to report bugs or make recommendations");
-
-
 // Inicializing for match counting
 
 const Matches = document.getElementById("MatchCounter");
 const MatchButton = document.getElementById("MatchButton");
-let CounterMatches = 10;
+let CounterMatches = 6;
 
 
-// LOG text
+// Inicializing LOG text
 
 let text1 = document.getElementById("text1");
 let text2 = document.getElementById("text2");
@@ -28,18 +23,18 @@ const PAGE = document.getElementById("PAGE");
 
 let light = false;
 
-// INTRO
+const LightText = document.getElementById("LIGHTtext")
+const progressBar = document.querySelector('.progress-bar');
+
+LightText.style.display = "none"
+progressBar.style.display = "none"
+
+
+// INTRO //
 
 let matchText = document.getElementById("test_text");
 
 MatchButton.onclick = function(){
-
-    // Transition from black to white circle background
-
-
-    PAGE.style.color = "black";
-    PAGE.style.transition = "1000ms";
-    PAGE.style.background = "radial-gradient(circle,rgb(102, 58, 0) 0%, rgb(22, 16, 0) 80%, rgba(0, 0, 0, 1) 100%)";
 
     matchText.textContent = "Matches";
     text1.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";   
@@ -52,23 +47,37 @@ MatchButton.onclick = function(){
 
     Matches.textContent = CounterMatches;
 
-    if(CounterMatches == 0){
-        text1.textContent = "you have no matches left";
-        text2.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark.";
-    }
-
     // cursor light
 
     light = true;
 
-    // disabling normal cursor ( TEST )
+    // disabling normal cursor
 
     PAGE.style.cursor = "none";
 
-    // Checking if you still have matches
+    // LIGHT progress bar
+    if(CounterMatches > 0){
+        LightProgressBar(MatchButton);
+    }
 
-    NoLight(CounterMatches)
+    // match light up sound effect
+
+    if(CounterMatches > 0){
+        MatchButton.addEventListener("click", MatchSoundEffect);
+    }
+
 }
+
+//// Sound effects
+
+// match light up sound effect
+
+function MatchSoundEffect(){
+    let MatchSound = new Audio("MatchLightUP.mp3");
+    MatchSound.play()
+}
+
+////*
 
 // Animated cursor 
 
@@ -93,11 +102,52 @@ document.addEventListener("mouseout", () => {
     cursor.style.display = "none";
 })    
 
-// When mo light source
+//// LIGHT FUNCTIONS
 
-function NoLight(CounterMatches){
-    if(CounterMatches == 0){
-        PAGE.style.background = "radial-gradient(circle, black, black, black)";
-        PAGE.style.color = "darkgray";
-    }
+// When no light source
+
+function NoLight(){
+    PAGE.style.background = "radial-gradient(circle, black, black, black)";
+    LightText.style.display = "none"
+    progressBar.style.display = "none"
+}
+
+// When light source 
+
+function Light(){
+    PAGE.style.color = "black";
+    PAGE.style.transition = "1000ms";
+    PAGE.style.background = "radial-gradient(circle,rgb(167, 53, 0) 0%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%)";
+    LightText.style.display = "inline";
+    progressBar.style.display = "flex"
+}
+
+/////*
+
+// LIGHT progress bar
+
+//const progressBar = document.querySelector('.progress-bar');
+
+function LightProgressBar(MatchButton, Matches){
+
+    MatchButton.addEventListener("click", () =>{
+    let progress = 100;
+
+    const interval = setInterval(() => {
+        if(progress == 0){
+            clearInterval(interval);
+            progressBar.style.color = "black";
+            if(Matches != 0){
+                MatchButton.style.display = "inline";
+            }
+            NoLight();
+        }
+        else{
+            progress--;
+            progressBar.style.width = progress + "%";
+            MatchButton.style.display = "none";
+            Light();
+        }
+    }, 500);
+    })
 }

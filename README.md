@@ -16,6 +16,23 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 # ChangeLog
 
+Xx ---------- 0.0.0 Build[4] 7/6/25 ---------- xX
+
+<< ADDED >>
+
+- Sounds effect, when match is lighted up
+- LightBar
+
+<< CHANGES >>
+
+- 10 Matches -> 5 Matches
+- Lighter background
+
+<< FIXED >>
+
+- When hovering over MatchCount, it showed cursor
+
+
 Xx ---------- 0.0.0 Build[3] 7/5/25 ---------- xX
 
 << OVERHAUL >>
