@@ -148,7 +148,7 @@ p:hover{
 
 /* LIGHT progress bar */
 
-h2{
+#LIGHTtext{
     color: rgb(255, 94, 0);
     text-shadow: 0 0 10px rgb(255, 51, 0);
 }
@@ -167,6 +167,35 @@ h2{
     height: 100%;
     width: 100%;
     background: linear-gradient(270deg, rgb(255, 208, 0), rgb(255, 0, 0)); 
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    border-radius: 20px 0 0 20px;
+    transition: width 0.3s ease;
+}
+
+/* FEAR progress bar */
+
+#SANITYtext{
+    color: rgb(204, 0, 255);
+    text-shadow: 0 0 10px rgb(143, 143, 255);
+}
+
+.progress-container-sanity{
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 5px;
+    margin: 5px 0;
+    margin-left: 10%;
+}
+
+.progress-bar-sanity{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(64, 0, 255), rgb(225, 0, 255)); 
     color: white;
     text-align: center;
     line-height: 30px;

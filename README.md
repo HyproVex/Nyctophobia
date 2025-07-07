@@ -16,6 +16,24 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 # ChangeLog
 
+Xx ---------- 0.0.0 Build[5] 7/7/25 ---------- xX
+
+<< ADDED >>
+
+- SanityBar -> when empty, your resource harvesting will be many times slower ( Gained by LIGHT )
+
+<< CHANGES >>
+
+- Light duration from 500 - 300
+- Number of matches increased from 5 - 8
+
+<< FIXED >>
+
+- first light up doesn't work
+- Lighting matches even after reaching 0 
+- first match was not Subtracted
+- Unnecessary amount of ".addEventListener"
+
 Xx ---------- 0.0.0 Build[4] 7/6/25 ---------- xX
 
 << ADDED >>
