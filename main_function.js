@@ -4,7 +4,15 @@
 const Matches = document.getElementById("MatchCounter");
 const MatchButton = document.getElementById("MatchButton");
 let matchText = document.getElementById("test_text");
-let CounterMatches = 8;
+let CounterMatches = 6;
+
+// Inicializing for examine button
+
+const ExamineBtn = document.getElementById("examineBtn");
+
+ExamineBtn.style.display = "none";
+
+let examineCount = 0;
 
 
 // Inicializing LOG text
@@ -99,9 +107,6 @@ MatchButton.onclick = function(){
     // Prototype for showing "Matches" text
     matchText.textContent = "Matches";
 
-    // Text when the first match is lighted
-    text1.textContent = "You lighted a match. The room is smaller than you expected. And yet. It's still too dark."; 
-
     // disabling normal cursor
     PAGE.style.cursor = "none";
 
@@ -125,16 +130,74 @@ MatchButton.onclick = function(){
     Matches.textContent = CounterMatches;
 }
 
-//// Sound effects
+// Examine button functions
+
+ExamineBtn.onclick = function(){
+
+    ExamineSoundEffect();
+
+    examineCount ++;
+
+    if(examineCount == 1){
+        text1.textContent = "You tried to look around. The room is smaller than you expected. And yet. It's still too dark.";
+    }
+    if(examineCount == 2){
+        text2.textContent = text1.textContent;
+        text1.textContent = "It looks like the walls are made of cobblestone, maybe you could try to search them.";
+    }
+    if(examineCount == 3){
+        text3.textContent = text2.textContent
+        text2.textContent = text1.textContent;
+        text1.textContent = "You looked at the walls and you noticed a small hole with a small flashing light on the other side.";
+    }
+    if(examineCount == 4){
+        text4.textContent = text3.textContent
+        text3.textContent = text2.textContent
+        text2.textContent = text1.textContent;
+        text1.textContent = "You tried to punch the wall, something fell on the ground.";
+    }
+
+    ExamineBar();
+}
+
+function ExamineBar(){
+
+    let progressExamine = 0;
+
+    const interval = setInterval(() => {
+        if(progressExamine >= 1){
+            clearInterval(interval);
+            ExamineBtn.style.cursor = "none";
+            ExamineBtn.style.border = "2px solid white";
+            ExamineBtn.style.color = "white";
+            ExamineBtn.disabled = false;
+        }
+        else{
+            progressExamine += 0.005;
+            ExamineBtn.style.opacity = progressExamine;
+            ExamineBtn.style.border = "2px solid red";
+            ExamineBtn.style.color = "red";
+            ExamineBtn.disabled = true;
+        }
+    }, 100);
+}
+
+// <<<< SOUND EFFECTS >>>>
 
 // match light up sound effect
 
 function MatchSoundEffect(){
     let MatchSound = new Audio("MatchLightUP.mp3");
-    MatchSound.play()
+    MatchSound.play();
 }
 
-////*
+function ExamineSoundEffect(){
+    let ExamineSound = new Audio("ExamineSoundEffect.mp3");
+    ExamineSound.play();
+}
+
+
+// <<<< CUSTOM CURSOR >>>>
 
 // Animated cursor 
 
@@ -159,7 +222,7 @@ document.addEventListener("mouseout", () => {
     cursor.style.display = "none";
 })    
 
-//// LIGHT FUNCTIONS
+// <<<< LIGHT FUNCTIONS >>>>
 
 // When no light source
 
@@ -169,6 +232,7 @@ function NoLight(){
     progressBar.style.display = "none";
     LightPage = false;
     SanityProgressBar();
+    ExamineBtn.style.display = "none";
 }
 
 // When light source 
@@ -180,6 +244,5 @@ function Light(){
     LightText.style.display = "inline";
     progressBar.style.display = "flex";
     LightPage = true;
+    ExamineBtn.style.display = "inline";
 }
-
-/////*

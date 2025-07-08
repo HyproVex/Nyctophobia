@@ -8,6 +8,7 @@ My first attempt to make ASCII/Incremental browser game.
 
 site: https://hyprovex.github.io/Nyctophobia/
 
+recommended default page size 100%
 
 # Story Summary 
 
@@ -15,6 +16,24 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 
 # ChangeLog
+
+Xx ---------- 0.0.0 Build[6] 7/8/25 ---------- xX
+
+<< ADDED >>
+
+- Examine button, for continuation of story ( new gameplay functions )
+- 4 New story Logs
+
+<< CHANGES >>
+
+- Outline of buttons from yellow -> white
+- First story logs will appear after first Examine
+- Number of matches decreased from 8 -> 6
+
+<< FIXED >>
+
+- Page Scaling in range of 125% - 25%
+
 
 Xx ---------- 0.0.0 Build[5] 7/7/25 ---------- xX
 
@@ -24,8 +43,8 @@ Xx ---------- 0.0.0 Build[5] 7/7/25 ---------- xX
 
 << CHANGES >>
 
-- Light duration from 500 - 300
-- Number of matches increased from 5 - 8
+- Light duration from 500 -> 300
+- Number of matches increased from 5 -> 8
 
 << FIXED >>
 
@@ -33,6 +52,7 @@ Xx ---------- 0.0.0 Build[5] 7/7/25 ---------- xX
 - Lighting matches even after reaching 0 
 - first match was not Subtracted
 - Unnecessary amount of ".addEventListener"
+
 
 Xx ---------- 0.0.0 Build[4] 7/6/25 ---------- xX
 

@@ -31,6 +31,16 @@
     padding: 10px 10px;
 }
 
+/* Log Text placement */
+
+.LogText{
+    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-left: 10%;
+    width: 80%;
+    text-align: center;
+}
+
 .Main{
     border: 1px solid black;
     width: 70%;
@@ -45,9 +55,8 @@
 footer{
     border: 1px solid black;
     text-align: center;
-    height: 7.6vh;
     align-items: end;
-    padding: 10px 10px;
+    height: 9.6vh;
 }
 
 
@@ -56,7 +65,7 @@ footer{
 button{
     font-size: 25px;
     transition: 300ms;
-    border: 2px solid rgb(253, 249, 0);
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 0px 10px;
     background-color: rgba(0, 0, 0, 0.966);
@@ -76,6 +85,11 @@ button:hover{
 button:active{
     font-size: 28px;
     transition: 10ms;
+}
+
+#examineBtn{
+    cursor: none;
+    opacity: 1;
 }
 
 /* Setting for MatchCounter */ 
@@ -128,7 +142,7 @@ button:active{
     background: rgb(255, 196, 34);
     width: 100px;
     height: 100px;
-    opacity: 0.2;
+    opacity: 0.1;
     transform: translate(-46%, -45%);
     border-radius: 50%;
     animation: light 12s infinite;
@@ -209,4 +223,5 @@ p:hover{
 #version{
     text-align: left;
     margin-left: 20px;
+    position: fixed;
 }
