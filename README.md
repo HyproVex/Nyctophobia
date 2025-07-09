@@ -17,6 +17,23 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 # ChangeLog
 
+Xx ---------- 0.0.0 Build[7] 7/9/25 ---------- xX
+
+<< ADDED >>
+
+- Materials
+- New Panic button -> If you have less than 25% of SanityBar, you can Examine in the dark ( ofcourse with penalty )
+- Small Secret
+
+<< CHANGES >>
+
+- Number of matches increased from 6 -> 8
+- Time for Examining decreased from 0.005 -> 0.008
+- Bigger font for number of matches
+- Sanity goes down faster 200 -> 150
+- Slight Story log changes
+
+
 Xx ---------- 0.0.0 Build[6] 7/8/25 ---------- xX
 
 << ADDED >>

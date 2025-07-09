@@ -29,6 +29,7 @@
     text-align: center;
     align-items: center;
     padding: 10px 10px;
+    font-weight: bold;
 }
 
 /* Log Text placement */
@@ -92,10 +93,15 @@ button:active{
     opacity: 1;
 }
 
+#PanicBtn{
+    border: 2px solid rgb(195, 0, 255);
+    color: rgb(191, 0, 255);
+}
+
 /* Setting for MatchCounter */ 
 
 #MatchCounter{
-    font-size: 25px;
+    font-size: 40px;
     font-weight: bolder;
     color: black;
     transition: 400ms;
@@ -216,6 +222,18 @@ p:hover{
     font-weight: bold;
     border-radius: 20px 0 0 20px;
     transition: width 0.3s ease;
+}
+
+/* Setting for Materials */
+
+#materials{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+#TitleMaterial{
+    font-weight: bolder;
+    font-size: 25px;
 }
 
 /* Settings for Version */ 

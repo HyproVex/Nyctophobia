@@ -4,7 +4,7 @@
 const Matches = document.getElementById("MatchCounter");
 const MatchButton = document.getElementById("MatchButton");
 let matchText = document.getElementById("test_text");
-let CounterMatches = 6;
+let CounterMatches = 8;
 
 // Inicializing for examine button
 
@@ -13,6 +13,37 @@ const ExamineBtn = document.getElementById("examineBtn");
 ExamineBtn.style.display = "none";
 
 let examineCount = 0;
+
+// Inicializing for PANIC button
+
+const PanicBtn = document.getElementById("PanicBtn");
+
+PanicBtn.style.display = "none";
+
+
+// Inicializing Materials
+
+const TitleMaterial = document.getElementById("TitleMaterial");
+
+const Quartz = document.getElementById("Quartz");
+const Sulfur = document.getElementById("Sulfur");
+const IronPowder = document.getElementById("IronPowder");
+const CarbonPowder = document.getElementById("CarbonPowder");
+
+const Explosives = document.getElementById("Explosives");
+
+TitleMaterial.style.display = "none";
+
+Quartz.style.display = "none";
+Sulfur.style.display = "none";
+IronPowder.style.display = "none";
+CarbonPowder.style.display = "none";
+Explosives.style.display = "none";
+
+let QuartzNum = 0;
+let SulfurNum = 0;
+let IronPowderNum = 0;
+let CarbonPowderNum = 0;
 
 
 // Inicializing LOG text
@@ -46,6 +77,15 @@ const SanityBar = document.querySelector(".progress-bar-sanity");
 
 SanityText.style.display = "none";
 SanityBar.style.display = "none";
+
+// Text Updating Algorithm
+
+function TextUpdating(){
+    text5.textContent = text4.textContent;
+    text4.textContent = text3.textContent;
+    text3.textContent = text2.textContent;
+    text2.textContent = text1.textContent;
+}
 
 
 //// INTRO ////
@@ -86,13 +126,15 @@ function SanityProgressBar(){
     intervalS = setInterval(() => {
         if (LightPage && progressSanity < 100) {
             progressSanity++;
+            PanicBtnCheking()
         } 
         else if (!LightPage && progressSanity > 0) {
             progressSanity--;
+            PanicBtnCheking()
         }
 
         SanityBar.style.width = progressSanity + "%";
-    }, 200);
+    }, 150);
 }
 
 // MatchButton functions
@@ -143,23 +185,111 @@ ExamineBtn.onclick = function(){
     }
     if(examineCount == 2){
         text2.textContent = text1.textContent;
-        text1.textContent = "It looks like the walls are made of cobblestone, maybe you could try to search them.";
+        text1.textContent = "It looks like the walls are made of cracked stones, but.. No doors are seen.";
     }
     if(examineCount == 3){
         text3.textContent = text2.textContent
         text2.textContent = text1.textContent;
-        text1.textContent = "You looked at the walls and you noticed a small hole with a small flashing light on the other side.";
+        text1.textContent = "You looked at the walls and you noticed a small hole with a tiny flashing light on the other side.";
     }
     if(examineCount == 4){
         text4.textContent = text3.textContent
         text3.textContent = text2.textContent
         text2.textContent = text1.textContent;
-        text1.textContent = "You tried to punch the wall, something fell on the ground.";
+        text1.textContent = "From Desperation, you tried to punch the wall. Something fell on the ground.";
+        TitleMaterial.style.display = "flex";
+    }
+
+    if(examineCount > 3){
+        ExamineLoot();
     }
 
     ExamineBar();
 }
 
+function ExamineLoot(){
+
+    // Erasing found materials from last examine
+    let QuartzExamine = 0;
+    let SulfurExamine = 0;
+    let IronPowderExamine = 0;
+    let CarbonPowderExamine = 0;
+
+    // materials gathering algorithm
+    if(progressSanity > 25){
+
+        QuartzExamine = Math.floor(Math.random() * 3) + 1;
+
+        if(examineCount > 8){
+            SulfurExamine = Math.floor(Math.random() * 3);
+        }
+
+        if(examineCount > 10){
+            IronPowderExamine = Math.floor(Math.random() * 2);
+        }
+
+        if(examineCount > 20){
+            CarbonPowderExamine = Math.floor(Math.random() * 2);
+        }
+    }
+    else{
+        QuartzExamine = Math.floor(Math.random() * 3);
+
+        if(examineCount > 6){
+            SulfurExamine = Math.floor(Math.random() * 2);
+        }
+
+        if(examineCount > 8){
+            IronPowderExamine = Math.floor(Math.random() * 2);
+        }
+    }
+
+    // shows how many materials you found
+    if(examineCount >= 4 && examineCount <= 8){
+        TextUpdating();
+        text1.textContent = `You found ${QuartzExamine} Quartz!`;
+    }
+    else if(examineCount >= 8 && examineCount <= 10){
+        TextUpdating();
+        text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur!`; 
+    }
+    else if(examineCount >= 10 && examineCount <= 20){
+        TextUpdating();
+        text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur | ${IronPowderExamine} IronPowder!`;
+    }
+    else if(examineCount > 20){
+        TextUpdating();
+        text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur | ${IronPowderExamine} IronPowder | ${CarbonPowderExamine} CarbonPowder!`;
+    }
+
+    // add found materials to existing materials
+    QuartzNum += QuartzExamine;
+    SulfurNum += SulfurExamine;
+    IronPowderNum += IronPowderExamine;
+    CarbonPowderNum += CarbonPowderExamine;
+
+    // update of materials in your storage
+    Quartz.textContent = "Quartz: " + QuartzNum;
+    Sulfur.textContent = "Sulfur: " + SulfurNum;
+    IronPowder.textContent = "IronPowder: " + IronPowderNum;
+    CarbonPowder.textContent = "CarbonPowder: " + CarbonPowderNum;
+
+    // showing new materials for the first time when reached 
+    if(QuartzNum > 0){
+        Quartz.style.display = "flex";
+    }
+    if(SulfurNum > 0){
+        Sulfur.style.display = "flex";
+    }
+    if(IronPowderNum > 0){
+        IronPowder.style.display = "flex";
+    }
+    if(CarbonPowderNum > 0){
+        CarbonPowder.style.display = "flex";
+    }
+}
+
+    // Graphic indicator when ready 
 function ExamineBar(){
 
     let progressExamine = 0;
@@ -173,7 +303,7 @@ function ExamineBar(){
             ExamineBtn.disabled = false;
         }
         else{
-            progressExamine += 0.005;
+            progressExamine += 0.008;
             ExamineBtn.style.opacity = progressExamine;
             ExamineBtn.style.border = "2px solid red";
             ExamineBtn.style.color = "red";
@@ -181,6 +311,73 @@ function ExamineBar(){
         }
     }, 100);
 }
+
+// Panic Button Settings
+
+function PanicBar(){
+
+    let progressPanic = 0;
+
+    const interval = setInterval(() => {
+        if(progressPanic >= 1){
+            clearInterval(interval);
+            PanicBtn.style.cursor = "none";
+            PanicBtn.style.border = "2px solid rgb(195, 0, 255)";
+            PanicBtn.style.color = "rgb(64, 0, 255)";
+            PanicBtn.disabled = false;
+        }
+        else{
+            progressPanic += 0.01;
+            PanicBtn.style.opacity = progressPanic;
+            PanicBtn.style.border = "2px solid red";
+            PanicBtn.style.color = "red";
+            PanicBtn.disabled = true;
+        }
+    }, 100);
+}
+
+function PanicBtnCheking(){
+    if(progressSanity < 25 && CounterMatches == 0){
+        PanicBtn.style.display = "inline";
+    }
+    else{
+        PanicBtn.style.display = "none";
+    }
+}
+
+PanicBtn.onclick = function(){
+
+    ExamineSoundEffect();
+
+    examineCount ++;
+
+    if(examineCount == 1){
+        text1.textContent = "You tried to look around. The room is smaller than you expected. And yet. It's still too dark.";
+    }
+    if(examineCount == 2){
+        text2.textContent = text1.textContent;
+        text1.textContent = "It looks like the walls are made of cobblestone, maybe you could try to search them.";
+    }
+    if(examineCount == 3){
+        text3.textContent = text2.textContent
+        text2.textContent = text1.textContent;
+        text1.textContent = "You looked at the walls and you noticed a small hole with a small flashing light on the other side.";
+    }
+    if(examineCount == 4){
+        text4.textContent = text3.textContent
+        text3.textContent = text2.textContent
+        text2.textContent = text1.textContent;
+        text1.textContent = "You tried to punch the wall, something fell on the ground.";
+        TitleMaterial.style.display = "flex";
+    }
+
+    if(examineCount > 3){
+        ExamineLoot();
+    }
+
+    PanicBar();
+};
+
 
 // <<<< SOUND EFFECTS >>>>
 
@@ -231,8 +428,8 @@ function NoLight(){
     LightText.style.display = "none";
     progressBar.style.display = "none";
     LightPage = false;
-    SanityProgressBar();
     ExamineBtn.style.display = "none";
+    SanityProgressBar();
 }
 
 // When light source 
