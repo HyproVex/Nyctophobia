@@ -457,7 +457,6 @@ function CraftSoundEffect(){
 }
 
 const CaveSound = new Audio("BackgroundSounds.mp3");
-CaveSound.loop = true;
 CaveSound.play();
 
 // Animated cursor 
