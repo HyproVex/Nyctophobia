@@ -168,6 +168,10 @@ function SanityProgressBar(){
 
 MatchButton.onclick = function(){
 
+    if(examineCount == 0){
+        BackgroundSound();
+    }
+
     let progressMatch = 0;
 
     const intervalM = setInterval(() => {
@@ -456,8 +460,11 @@ function CraftSoundEffect(){
     CraftSound.play();
 }
 
-const CaveSound = new Audio("BackgroundSounds.mp3");
-CaveSound.play();
+function BackgroundSound(){
+    let CaveSound = new Audio("BackgroundSounds.mp3");
+    CaveSound.loop = true;
+    CaveSound.play();
+}
 
 // Animated cursor 
 
