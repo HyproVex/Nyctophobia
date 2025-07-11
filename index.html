@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main_style.css">
 
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <!-- FAVICONS -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="Favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Favicons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- TITLE -->
+
     <title>Nyctophobia</title>
 
 </head>
@@ -22,35 +37,37 @@
     <div class="Wrapper">
 
         <div class="Log" id="Log2">
-            <p><b>Data Logging</b></p>
             <p id="text1" class="LogText">You woke up</p>
             <p id="text2" class="LogText"></p>
             <p id="text3" class="LogText"></p>
             <p id="text4" class="LogText"></p>
             <p id="text5" class="LogText"></p>
+            <p id="text6" class="LogText"></p>
+            <p id="text7" class="LogText"></p>
+            <p id="text8" class="LogText"></p>
         </div>
 
         <div class="Main">
 
-            <p><b>Main Control Panel</b></p>
+            <div class="Bars">
 
-            <br>
-
-            <h2 id="SANITYtext">SANITY</h2>
-            <div class="progress-container-sanity">
-                <div class="progress-bar-sanity">
+                    <h2 id="SANITYtext">SANITY</h2>
+                <div class="progress-container-sanity">
+                    <div class="progress-bar-sanity">
+                    </div>
                 </div>
+
+                <br>
+
+                <h2 id="LIGHTtext">LIGHT</h2>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                    </div>
+                </div>
+
             </div>
 
-            <br>
-
-            <h2 id="LIGHTtext">LIGHT</h2>
-            <div class="progress-container">
-                <div class="progress-bar">
-                </div>
-            </div>
-
-            <p id="test_text"></p>
+            <p id="MatchText"></p>
 
             <label id="MatchCounter"></label>
 
@@ -64,16 +81,48 @@
 
             <div id="materials">
 
-                <p id="TitleMaterial">MATERIALS</p>
-                <br>
-                <p id="Quartz"></p>
-                <p id="Sulfur"></p>
+                <p id="TitleMaterial">MATERIALS</p><br>
+                <p id="Quartz"></p><br>
+                <p id="Sulfur"></p><br>
                 <p id="IronPowder"><p>
                 <p id="CarbonPowder"><p>
-                <p id="Explosives"><p>
+
             </div>
 
-            <div class="CRAFTING">
+            <br>
+
+            <div id="CRAFTING">
+
+                <p id="TitleCrafting">CRAFTING</p><br>
+
+                <div class="dropdown">
+
+                    <button class="CraftButton" id="MatchCraft">Match</button>
+
+                    <div class="CraftingTip" id="MatchCraftingTip">
+
+                        <p class="ingredient">10 Quartz</p>
+                        <p class="ingredient">5 Sulfur</p>
+                        <p class="ingredient">1 IronPowder</p>
+                        
+                    </div>
+
+                </div>
+
+                <div class="dropdown">
+
+                    <button class="CraftButton" id="ExplosiveCraft">Explosives</button>
+
+                    <div class="CraftingTip" id="MatchCraftingTip">
+
+                        <p class="ingredient">50 Quartz</p>
+                        <p class="ingredient">40 Sulfur</p>
+                        <p class="ingredient">20 IronPowder</p>
+                        <p class="ingredient">5 CarbonPowder</p>
+                        
+                    </div>
+
+                </div>
 
             </div>
 
@@ -85,17 +134,16 @@
 
     <footer>
 
-        <p><b>Others</b></p>
         <div id="Footers">
             <br>
             <dl>
                 <dd>
-                    <a href="https://github.com/HyproVex">GitHub</a>
+                    <a href="https://github.com/HyproVex" id="Github">GitHub</a>
                 </dd>
             </dl>
         </div>
 
-        <p id="version"><b>Version 0.0.0 Build[7]</b></p>
+        <p id="version"><b>Version 0.1.0 Release</b></p>
 
     </footer>
 

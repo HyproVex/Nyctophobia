@@ -17,6 +17,41 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 # ChangeLog
 
+Xx ---------- ACT I UPDATE ---------- xX
+[ 0.1.0 Release 7/11/25 ] 
+
+<< ADDED >>
+
+- Crafting
+- If sanity is below 30, matches light up automatically
+- New PANIC button animations
+- Icon for page
+- New Story logs
+- ACT I
+- New sound effects
+- 3 more story log slots
+- Animation when Materials/Craft is unlocked
+
+<< CHANGES >>
+
+- Helping lines are now removed
+- New Github link design
+- Smaller gap between story logs
+- SanityBar and LightBar are partially hidden in the darkness
+- New Fonts
+- Bigger font for "Matches"
+- Lifespan of one match increased from 300 -> 500
+- Higher droprate of Sulfur and Iron powder
+- Lowering volume for Examine sound effect
+
+<< FIXED >>
+
+- Showing "LIGHT" when no matches left
+- Disabled text selection
+- Double/triple clicking "LIGHT" button at once | thx to @Fireroth
+- Text selection when not howered [ Materials ]
+
+
 Xx ---------- 0.0.0 Build[7] 7/9/25 ---------- xX
 
 << ADDED >>
