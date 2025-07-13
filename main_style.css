@@ -7,6 +7,13 @@
     font-family: "Alumni Sans SC";
     user-select: none;
 }
+body{
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
 #PAGE{
     background: radial-gradient(circle, black, black, black);
     color: white;
@@ -30,6 +37,9 @@
     text-align: center;
     align-items: center;
     padding: 10px 10px;
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid rgb(0, 0, 0);
+    margin-top: 50px;
 }
 
 /* Log Text placement */
@@ -256,7 +266,6 @@ p:hover{
 #materials{
     text-align: left;
     font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.197);
     box-shadow: -2px 2px 5px black;
     border: 1px solid rgb(0, 0, 0);
     padding-left: 20px;
@@ -283,7 +292,7 @@ p:hover{
 
 #CRAFTING{
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.197);
+    background: linear-gradient(90deg, rgba(255, 77, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%);
     box-shadow: -2px 2px 5px black;
     border: 1px solid rgb(0, 0, 0);
     padding-left: 20px;
@@ -303,7 +312,7 @@ p:hover{
     margin-top: -10px;
     display: none;
     position: absolute;
-    background-color: rgb(151, 66, 0);
+    background-color: rgba(151, 65, 0, 0.581);
     min-width: 100px;
     box-shadow: -2px 3px 5px black;
 }

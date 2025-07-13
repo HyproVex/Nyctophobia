@@ -17,6 +17,23 @@ You woke up in a small room, no bigger than a toilet room. Your memories are blu
 
 # ChangeLog
 
+Xx ---------- 0.1.1 7/9/25 ---------- xX
+
+<< OVERHAUL >>
+
+- Background remake
+- Slight coloring remake
+
+<< CHANGES >>
+
+- higher droprate for quartz
+- lower droprate for IronPowder
+- Github link is now "_Blank"
+- Craft for match is slightly harder 
+- Number of matches decreased form 8 -> 3
+- Lifespan of one match increased from 500 -> 1000
+
+
 Xx ---------- ACT I UPDATE ---------- xX
 [ 0.1.0 Release 7/11/25 ] 
 

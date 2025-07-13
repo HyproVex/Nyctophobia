@@ -1,10 +1,14 @@
 
+// Inicializing for LOG settings
+
+const LOG = document.getElementById("Log2");
+
 // Inicializing for match counting
 
 const Matches = document.getElementById("MatchCounter");
 const MatchButton = document.getElementById("MatchButton");
 let matchText = document.getElementById("MatchText");
-let CounterMatches = 8; 
+let CounterMatches = 3; 
 
 // Inicializing for examine button
 
@@ -130,7 +134,7 @@ function LightProgressBar(){
             MatchButton.style.display = "none";
             Light();
         }
-    }, 500);
+    }, 1000);
 }
 
 // SANITY progress bar
@@ -240,10 +244,10 @@ function ExamineLoot(){
     // materials gathering algorithm
     if(progressSanity > 25){
 
-        QuartzExamine = Math.floor(Math.random() * 3) + 1;
+        QuartzExamine = Math.floor(Math.random() * 5) + 1;
 
         if(examineCount > 8){
-            SulfurExamine = Math.floor(Math.random() * 3) + 1;
+            SulfurExamine = Math.floor(Math.random() * 5);
         }
 
         if(examineCount > 10){
@@ -258,7 +262,7 @@ function ExamineLoot(){
         QuartzExamine = Math.floor(Math.random() * 3);
 
         if(examineCount > 6){
-            SulfurExamine = Math.floor(Math.random() * 2);
+            SulfurExamine = Math.floor(Math.random() * 3);
         }
 
         if(examineCount > 8){
@@ -387,7 +391,7 @@ PanicBtn.onclick = function(){
 
 MatchCraftBtn.onclick = function(){
 
-    if(QuartzNum >= 10 && SulfurNum >= 5 && IronPowderNum >= 1){
+    if(QuartzNum >= 10 && SulfurNum >= 5 && IronPowderNum >= 3){
 
         CraftSoundEffect();
 
@@ -498,6 +502,9 @@ function NoLight(){
     LightPage = false;
     ExamineBtn.style.display = "none";
     SanityProgressBar();
+    Materials.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    LOG.style.background = "linear-gradient(-90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    CRAFTING.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
 }
 
 // When light source 
@@ -505,11 +512,14 @@ function NoLight(){
 function Light(){
     PAGE.style.color = "black";
     PAGE.style.transition = "1000ms";
-    PAGE.style.background = "radial-gradient(circle,rgb(167, 53, 0) 0%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%)";
+    PAGE.style.background = "radial-gradient(circle,rgba(255, 106, 0, 0) 20%, rgba(0, 0, 0, 0.67) 75%, rgba(0, 0, 0, 1) 100%)";
     LightText.style.display = "inline";
     progressBar.style.display = "flex";
     ExamineBtn.style.display = "inline";
     LightPage = true;
+    Materials.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    LOG.style.background = "linear-gradient(-90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    CRAFTING.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
 }
 
 // StoryLogs
@@ -604,7 +614,7 @@ function CraftMatch(){
 
     QuartzNum -= 10;
     SulfurNum -= 5;
-    IronPowderNum -= 1;
+    IronPowderNum -= 3;
     
 
     CounterMatches += 1;
