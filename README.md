@@ -1,23 +1,42 @@
 # Nyctophobia
 
-Incremental Game 1
+Browser Game 1
 
 Game made by HyproVex
 
-My first attempt to make ASCII/Incremental browser game.
-
 site: https://hyprovex.github.io/Nyctophobia/
 
-recommended default page size 100%
+recommended page size 100% with sounds on.
 
 # Story Summary 
 
-You woke up in a small room, no bigger than a toilet room. Your memories are blurry. The darkness is making you anxious.
-
+You woke up in a small room, barely even fitting there and your fear of dark gets worst. Luckily, you found 3 matches. Now you have to get out of here before "it" will found you. 
 
 # ChangeLog
 
-Xx ---------- 0.1.1 7/9/25 ---------- xX
+Xx ---------- 0.1.2 7/14/25 ---------- xX
+
+<< ADDED >>
+
+- New story summary on github page
+- 2 more story log slots
+
+<< CHANGES >>
+
+- smoother transition between light and darkness
+- mentioning when new log text
+
+<< FIXED >>
+
+- Unable to unlock craft by PANIC button
+- Unable to light up a match in panic state 
+
+<< CODE >>
+
+- Polishing
+
+
+Xx ---------- 0.1.1 7/13/25 ---------- xX
 
 << OVERHAUL >>
 

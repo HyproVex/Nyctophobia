@@ -13,58 +13,44 @@ let CounterMatches = 3;
 // Inicializing for examine button
 
 const ExamineBtn = document.getElementById("examineBtn");
-
 ExamineBtn.style.display = "none";
-
 let examineCount = 0;
 
 // Inicializing for PANIC button
 
 const PanicBtn = document.getElementById("PanicBtn");
-
 PanicBtn.style.display = "none";
-
 
 // Inicializing Materials
 
 const TitleMaterial = document.getElementById("TitleMaterial");
 const Materials = document.getElementById("materials");
-
 const Quartz = document.getElementById("Quartz");
 const Sulfur = document.getElementById("Sulfur");
 const IronPowder = document.getElementById("IronPowder");
 const CarbonPowder = document.getElementById("CarbonPowder");
-
 Materials.style.display = "none";
 TitleMaterial.style.display = "none";
-
 Quartz.style.display = "none";
 Sulfur.style.display = "none";
 IronPowder.style.display = "none";
 CarbonPowder.style.display = "none";
-
 let QuartzNum = 0;
 let SulfurNum = 0;
 let IronPowderNum = 0;
 let CarbonPowderNum = 0;
-
 let Explosive = false;
-
 
 // Inicializing Crafting
 
 const MatchCraftBtn = document.getElementById("MatchCraft");
 const ExplosiveCraftBtn = document.getElementById("ExplosiveCraft");
-
 const TitleCrafting = document.getElementById("TitleCrafting");
 const CRAFTING = document.getElementById("CRAFTING");
-
 CRAFTING.style.display = "none";
-
 MatchCraftBtn.style.display = "none";
 ExplosiveCraftBtn.style.display = "none";
 TitleCrafting.style.display = "none";
-
 
 // Inicializing LOG text
 
@@ -76,6 +62,8 @@ let text5 = document.getElementById("text5");
 let text6 = document.getElementById("text6");
 let text7 = document.getElementById("text7");
 let text8 = document.getElementById("text8");
+let text9 = document.getElementById("text9");
+let text10 = document.getElementById("text10");
 
 // Inicializing for PAGE functions
 
@@ -85,10 +73,8 @@ let LightPage = false;
 // Inicializing light
 
 let light = false;
-
 const LightText = document.getElementById("LIGHTtext");
 const progressBar = document.querySelector('.progress-bar');
-
 LightText.style.display = "none";
 progressBar.style.display = "none";
 
@@ -96,13 +82,16 @@ progressBar.style.display = "none";
 
 const SanityText = document.getElementById("SANITYtext");
 const SanityBar = document.querySelector(".progress-bar-sanity");
-
 SanityText.style.display = "none";
 SanityBar.style.display = "none";
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Text Updating Algorithm
 
 function TextUpdating(){
+    text10.textContent = text9.textContent;
+    text9.textContent = text8.textContent;
     text8.textContent = text7.textContent;
     text7.textContent = text6.textContent;
     text6.textContent = text5.textContent;
@@ -112,11 +101,16 @@ function TextUpdating(){
     text2.textContent = text1.textContent;
 }
 
+function NewTextMention(){
+    text1.style.animation = "text1Up 700ms linear";
+    setTimeout(() => {
+        text1.style.animation = "none";
+    }, 2000);
+}
 
-//// INTRO ////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-// LIGHT progress bar
+/// LIGHT progress bar ///
 
 function LightProgressBar(){
 
@@ -137,10 +131,11 @@ function LightProgressBar(){
     }, 1000);
 }
 
-// SANITY progress bar
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// SANITY progress bar ///
 
 let progressSanity = 100;
-
     
 let intervalS = null; // checks if the interval already exists
 
@@ -168,7 +163,9 @@ function SanityProgressBar(){
     }, 150);
 }
 
-// MatchButton functions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// MATCHBUTTON ///
 
 MatchButton.onclick = function(){
 
@@ -199,23 +196,25 @@ MatchButton.onclick = function(){
     SanityText.style.display = "inline";
     SanityBar.style.display = "flex";
 
-    matchText.textContent = "Matches";      //showing "Matches" text
+    matchText.textContent = "Matches";      
 
-    PAGE.style.cursor = "none";     // disabling normal cursor
+    PAGE.style.cursor = "none";     
 
     light = true;       // cursor light
 
     if(CounterMatches > 0){
-        CounterMatches -= 1;        // Counter by clicking button ( Matches )
-        LightProgressBar();     // LIGHT progress bar
-        MatchSoundEffect();      // match light up sound effect
+        CounterMatches -= 1;        
+        LightProgressBar();     
+        MatchSoundEffect();     
     }
 
-    Matches.textContent = CounterMatches;       // Updating CounterMatches
+    Matches.textContent = CounterMatches;       
     
 }
 
-// Examine button functions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// EXAMINE ///
 
 ExamineBtn.onclick = function(){
 
@@ -233,15 +232,16 @@ ExamineBtn.onclick = function(){
     ExamineBar();
 }
 
+
 function ExamineLoot(){
 
-    // Erasing found materials from last examine
+    
     let QuartzExamine = 0;
     let SulfurExamine = 0;
     let IronPowderExamine = 0;
     let CarbonPowderExamine = 0;
 
-    // materials gathering algorithm
+    
     if(progressSanity > 25){
 
         QuartzExamine = Math.floor(Math.random() * 5) + 1;
@@ -274,18 +274,22 @@ function ExamineLoot(){
     if(examineCount >= 4 && examineCount <= 8){
         TextUpdating();
         text1.textContent = `You found ${QuartzExamine} Quartz!`;
+        NewTextMention();
     }
     else if(examineCount >= 8 && examineCount <= 10){
         TextUpdating();
-        text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur!`; 
+        text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur!`;
+        NewTextMention() ;
     }
     else if(examineCount >= 10 && examineCount <= 20){
         TextUpdating();
         text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur | ${IronPowderExamine} IronPowder!`;
+        NewTextMention();
     }
     else if(examineCount > 20){
         TextUpdating();
         text1.textContent = `You found ${QuartzExamine} Quartz | ${SulfurExamine} Sulfur | ${IronPowderExamine} IronPowder | ${CarbonPowderExamine} CarbonPowder!`;
+        NewTextMention();
     }
 
     // add found materials to existing materials
@@ -315,7 +319,6 @@ function ExamineLoot(){
     }
 }
 
-    // Graphic indicator when ready 
 function ExamineBar(){
 
     let progressExamine = 0;
@@ -337,6 +340,8 @@ function ExamineBar(){
         }
     }, 100);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // <<<< PANIC BUTTON >>>>
 
@@ -381,13 +386,228 @@ PanicBtn.onclick = function(){
 
     if(examineCount > 3){
         ExamineLoot();
+        CraftDetection();
+    }
+
+    if(CounterMatches > 0){
+        MatchButton.style.display = "inline";
     }
 
     PanicBar();
 
 }
 
-// CRAFT BUTTONS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// SFX ///
+
+function MatchSoundEffect(){
+    let MatchSound = new Audio("SFX/MatchLightUP.mp3");
+    MatchSound.play();
+}
+
+function ExamineSoundEffect(){
+    let ExamineSound = new Audio("SFX/ExamineSoundEffect.mp3");
+    ExamineSound.play();
+}
+
+function CraftSoundEffect(){
+    let CraftSound = new Audio("SFX/CraftSoundEffect.mp3");
+    CraftSound.play();
+}
+
+function BackgroundSound(){
+    let CaveSound = new Audio("SFX/BackgroundSounds.mp3");
+    CaveSound.loop = true;
+    CaveSound.play();
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// CURSOR ///
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    cursor.style.top = y + "px";
+    cursor.style.left = x + "px";
+
+    if(light == true){
+        cursor.style.display = "block";
+        MatchButton.style.cursor = "none"
+    }
+})
+
+document.addEventListener("mouseout", () => {
+    cursor.style.display = "none";
+})    
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// LIGHTS ///
+
+function NoLight(){
+    PAGE.style.background = "black";
+    SanityProgressBar();
+    LightPage = false;
+    //
+    LightText.style.display = "none";
+    progressBar.style.display = "none";
+    ExamineBtn.style.display = "none";
+    //
+    Materials.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    LOG.style.background = "linear-gradient(-90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    CRAFTING.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
+}
+
+function Light(){
+    LightPage = true;
+    //
+    PAGE.style.transition = "300ms";
+    PAGE.style.background = "radial-gradient(circle,rgba(255, 106, 0, 0) 20%, rgba(0, 0, 0, 0.67) 75%, rgba(0, 0, 0, 1) 100%)";
+    //
+    LightText.style.display = "inline";
+    progressBar.style.display = "flex";
+    ExamineBtn.style.display = "inline";
+    //
+    Materials.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    LOG.style.background = "linear-gradient(-90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
+    CRAFTING.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// STORYLOGS ///
+
+function StoryLog(){
+        switch(examineCount){
+            case 1 :
+                text1.textContent = "You tried to look around. The room is smaller than you expected. And yet. It's still too dark.";
+                NewTextMention();
+                break;
+            case 2 :
+                TextUpdating();
+                text1.textContent = "It looks like the walls are made of cracked stones, but.. No doors are seen.";
+                NewTextMention();         
+                break;
+            case 3 :
+                TextUpdating();
+                text1.textContent = "You looked at the walls and you noticed a small hole with a tiny flashing light on the other side.";
+                NewTextMention();
+                break;
+            case 4 :
+                TextUpdating();
+                text1.textContent = "From Desperation, you tried to punch the wall. Something fell on the ground.";
+                NewTextMention();
+                TitleMaterial.style.display = "inline-block";
+                Materials.style.display = "block";
+                Materials.style.animation = "ContainerAnimation 1.5s ease-out";
+                break;
+            case 9 :
+                TextUpdating();
+                text1.textContent = "Bright yellow mineral, it smells horrible. But then you got an idea."
+                NewTextMention();
+                break;
+            case 11 :
+                TextUpdating();
+                text1.textContent = "Small amount of iron powder. Hopefully enough for making a weak match"
+                NewTextMention();
+                break;
+            case 21 :
+                TextUpdating();
+                text1.textContent = "Today It's your lucky day. You found carbon powder. Maybe you could get out of here."
+                NewTextMention();
+                break;
+        }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// AUTO MATCH UP ///
+
+function AutomaticMatchUp(){
+
+    if(progressSanity == 30 && CounterMatches > 0){
+        
+        CounterMatches -= 1;
+
+        LightProgressBar();
+
+        MatchSoundEffect();
+
+        Matches.textContent = CounterMatches;
+
+        let progressMatch = 0;
+
+        const intervalM = setInterval(() => {
+            if(progressMatch >= 1){
+                clearInterval(intervalM);
+                MatchButton.style.cursor = "none";
+                MatchButton.style.border = "2px solid white";
+                MatchButton.style.color = "white";
+                MatchButton.disabled = false;
+            }
+            else{
+                progressMatch += 0.02;
+                MatchButton.style.opacity = progressMatch;
+                MatchButton.style.border = "2px solid red";
+                MatchButton.style.color = "red";
+                MatchButton.disabled = true;
+            }
+        }, 100);
+
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// CRAFTING ///
+
+function CraftDetection(){
+    if(QuartzNum >= 10 && SulfurNum >= 5 && IronPowderNum >= 1){
+        CRAFTING.style.display = "block";
+        CRAFTING.style.animation = "ContainerAnimation 1.5s ease-out";
+        TitleCrafting.style.display = "inline-block";
+        MatchCraftBtn.style.display = "flex";
+    }
+
+    if(CarbonPowderNum >= 1){
+        ExplosiveCraftBtn.style.display = "flex";
+    }
+}
+
+function CraftMatch(){
+
+    QuartzNum -= 10;
+    SulfurNum -= 5;
+    IronPowderNum -= 3;
+
+    CounterMatches += 1;
+    Matches.textContent = CounterMatches;
+
+    Quartz.textContent = "Quartz: " + QuartzNum;
+    Sulfur.textContent = "Sulfur: " + SulfurNum;
+    IronPowder.textContent = "IronPowder: " + IronPowderNum;
+}
+
+
+function CraftExplosive(){
+    QuartzNum -= 50;
+    SulfurNum -= 40;
+    IronPowderNum -= 20;
+    CarbonPowderNum -= 5;
+
+    TextUpdating();
+    text1.textContent = "Your ticket out of here. END OF DEMO"
+
+    Quartz.textContent = "Quartz: " + QuartzNum;
+    Sulfur.textContent = "Sulfur: " + SulfurNum;
+    IronPowder.textContent = "IronPowder: " + IronPowderNum;
+    CarbonPowder.textContent = "CarbonPowder: " + CarbonPowderNum;
+}
 
 MatchCraftBtn.onclick = function(){
 
@@ -447,196 +667,4 @@ ExplosiveCraftBtn.onclick = function(){
     }
 }
 
-// sound effects
-
-function MatchSoundEffect(){
-    let MatchSound = new Audio("MatchLightUP.mp3");
-    MatchSound.play();
-}
-
-function ExamineSoundEffect(){
-    let ExamineSound = new Audio("ExamineSoundEffect.mp3");
-    ExamineSound.play();
-}
-
-function CraftSoundEffect(){
-    let CraftSound = new Audio("CraftSoundEffect.mp3");
-    CraftSound.play();
-}
-
-function BackgroundSound(){
-    let CaveSound = new Audio("BackgroundSounds.mp3");
-    CaveSound.loop = true;
-    CaveSound.play();
-}
-
-// Animated cursor 
-
-const cursor = document.querySelector(".cursor");
-
-document.addEventListener("mousemove", (e) => {
-    let x = e.pageX;
-    let y = e.pageY;
-
-    cursor.style.top = y + "px";
-    cursor.style.left = x + "px";
-
-    if(light == true){
-        cursor.style.display = "block";
-        MatchButton.style.cursor = "none"
-    }
-})
-
-    //cursor effect on mouseout
-
-document.addEventListener("mouseout", () => {
-    cursor.style.display = "none";
-})    
-
-// When no light source
-
-function NoLight(){
-    PAGE.style.background = "radial-gradient(circle, black, black, black)";
-    LightText.style.display = "none";
-    progressBar.style.display = "none";
-    LightPage = false;
-    ExamineBtn.style.display = "none";
-    SanityProgressBar();
-    Materials.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
-    LOG.style.background = "linear-gradient(-90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
-    CRAFTING.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.13) 60%, rgba(0, 0, 0, 0.337) 100%)";
-}
-
-// When light source 
-
-function Light(){
-    PAGE.style.color = "black";
-    PAGE.style.transition = "1000ms";
-    PAGE.style.background = "radial-gradient(circle,rgba(255, 106, 0, 0) 20%, rgba(0, 0, 0, 0.67) 75%, rgba(0, 0, 0, 1) 100%)";
-    LightText.style.display = "inline";
-    progressBar.style.display = "flex";
-    ExamineBtn.style.display = "inline";
-    LightPage = true;
-    Materials.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
-    LOG.style.background = "linear-gradient(-90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
-    CRAFTING.style.background = "linear-gradient(90deg, rgba(250, 75, 0, 0.134) 60%, rgba(0, 0, 0, 0.337) 100%)";
-}
-
-// StoryLogs
-
-function StoryLog(){
-        switch(examineCount){
-            case 1 :
-                text1.textContent = "You tried to look around. The room is smaller than you expected. And yet. It's still too dark.";
-                break;
-            case 2 :
-                TextUpdating();
-                text1.textContent = "It looks like the walls are made of cracked stones, but.. No doors are seen.";
-                break;
-            case 3 :
-                TextUpdating();
-                text1.textContent = "You looked at the walls and you noticed a small hole with a tiny flashing light on the other side.";
-                break;
-            case 4 :
-                TextUpdating();
-                text1.textContent = "From Desperation, you tried to punch the wall. Something fell on the ground.";
-                TitleMaterial.style.display = "inline-block";
-                Materials.style.display = "block";
-                Materials.style.animation = "ContainerAnimation 1.5s ease-out";
-                break;
-            case 9 :
-                TextUpdating();
-                text1.textContent = "Bright yellow mineral, it smells horrible. But then you got an idea."
-                break;
-            case 11 :
-                TextUpdating();
-                text1.textContent = "Small amount of iron powder. Hopefully enough for making a weak match"
-                break;
-            case 21 :
-                TextUpdating();
-                text1.textContent = "Today It's your lucky day. You found carbon powder. Maybe you could get out of here."
-                break;
-        }
-    }
-
-// Automatic Match Up
-
-function AutomaticMatchUp(){
-
-    if(progressSanity == 30 && CounterMatches > 0){ // Automatic light up when CounterMatches > 0
-        
-        CounterMatches -= 1; // Counter by clicking button ( Matches )
-
-        LightProgressBar(); // LIGHT progress bar
-
-        MatchSoundEffect(); // match light up sound effect
-
-        Matches.textContent = CounterMatches; // Updating match count   
-
-        let progressMatch = 0;
-
-        const intervalM = setInterval(() => {
-            if(progressMatch >= 1){
-                clearInterval(intervalM);
-                MatchButton.style.cursor = "none";
-                MatchButton.style.border = "2px solid white";
-                MatchButton.style.color = "white";
-                MatchButton.disabled = false;
-            }
-            else{
-                progressMatch += 0.02;
-                MatchButton.style.opacity = progressMatch;
-                MatchButton.style.border = "2px solid red";
-                MatchButton.style.color = "red";
-                MatchButton.disabled = true;
-            }
-        }, 100);
-
-    }
-}
-
-// Showing Crafting part
-
-function CraftDetection(){
-    if(QuartzNum >= 10 && SulfurNum >= 5 && IronPowderNum >= 1){
-        CRAFTING.style.display = "block";
-        CRAFTING.style.animation = "ContainerAnimation 1.5s ease-out";
-        TitleCrafting.style.display = "inline-block";
-        MatchCraftBtn.style.display = "flex";
-    }
-
-    if(CarbonPowderNum >= 1){
-        ExplosiveCraftBtn.style.display = "flex";
-    }
-}
-
-function CraftMatch(){
-
-    QuartzNum -= 10;
-    SulfurNum -= 5;
-    IronPowderNum -= 3;
-    
-
-    CounterMatches += 1;
-    Matches.textContent = CounterMatches;
-
-    Quartz.textContent = "Quartz: " + QuartzNum;
-    Sulfur.textContent = "Sulfur: " + SulfurNum;
-    IronPowder.textContent = "IronPowder: " + IronPowderNum;
-}
-
-
-function CraftExplosive(){
-    QuartzNum -= 50;
-    SulfurNum -= 40;
-    IronPowderNum -= 20;
-    CarbonPowderNum -= 5;
-
-    TextUpdating();
-    text1.textContent = "Your ticket out of here. END OF DEMO"
-
-    Quartz.textContent = "Quartz: " + QuartzNum;
-    Sulfur.textContent = "Sulfur: " + SulfurNum;
-    IronPowder.textContent = "IronPowder: " + IronPowderNum;
-    CarbonPowder.textContent = "CarbonPowder: " + CarbonPowderNum;
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
